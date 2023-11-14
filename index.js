@@ -22,7 +22,7 @@ app.get('/create-candidate', function (req, res) {
 app.post('/create-candidate', async (req, res) => {
     const { first_name, last_name, email } = req.body;
 
-    // FOR TESTING - Change Campaign ID if needed. In this example it's 52.
+    // FOR TESTING - Change Campaign ID if needed. In this example it's 58.
     try {
         const response = await axios.post('https://tech-eval.talkpush.com/api/talkpush_services/campaigns/58/campaign_invitations',
         {
@@ -45,7 +45,7 @@ app.post('/create-candidate', async (req, res) => {
 
 // Retrieve Candidates
 app.get('/candidates', async (req, res) => {
-    // FOR TESTING - Change Campaign ID if needed. In this example it's 52.
+    // FOR TESTING - Change Campaign ID if needed. In this example it's 58.
     try {
         const response = await axios.get('https://tech-eval.talkpush.com/api/talkpush_services/campaign_invitations?api_key=77a9113bda7ae5b92a6ef892135d4e04&filter%5Bcampaign_id%5D=58')
         

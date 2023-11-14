@@ -4,7 +4,7 @@ import app from './index.js';
 
 describe("POST /create-candidate", () => {
     describe("given first name, last name and email", () => {
-        test("should respond with a 200 status code for success", async () => {
+        test("should respond with a 200 status code for success creation of candidate", async () => {
             let x = Math.floor((Math.random() * 100_000_000) + 1)
             const response = await request(app).post("/create-candidate").send(
             {
@@ -25,7 +25,7 @@ describe("POST /create-candidate", () => {
 
 describe("GET /candidates", () => {
     describe("retrieving the list of all candidates", () => {
-        test("should respond with a 200 status code", async () => {
+        test("should respond with a 200 status code for success retrieval", async () => {
             const response = await request(app).get("/candidates")
             expect(response.statusCode).toBe(200)
         })
@@ -33,7 +33,7 @@ describe("GET /candidates", () => {
 })
 
 describe("PUT /shortlist", () => {
-    describe("using the put shortlist API without any specific candidate ID", () => {
+    describe("using the put shortlist API without any specific candidate ID just to show it's reaching to the API endpoint", () => {
         test("should respond with a 404 status code", async () => {
             const response = await request(app).get(`/shortlist`)
             expect(response.statusCode).toBe(404)
@@ -43,7 +43,7 @@ describe("PUT /shortlist", () => {
 
 describe("POST /campaign", () => {
     describe("given basic campaign field requirements", () => {
-        test("should respond with a 200 status code for success", async () => {
+        test("should respond with a 200 status code for success creation of campaign", async () => {
             const response = await request(app).post("/campaign").send(
                 {
                     "api_key": "77a9113bda7ae5b92a6ef892135d4e04",
