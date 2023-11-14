@@ -24,7 +24,7 @@ app.post('/create-candidate', async (req, res) => {
 
     // FOR TESTING - Change Campaign ID if needed. In this example it's 52.
     try {
-        const response = await axios.post('https://tech-eval.talkpush.com/api/talkpush_services/campaigns/52/campaign_invitations',
+        const response = await axios.post('https://tech-eval.talkpush.com/api/talkpush_services/campaigns/58/campaign_invitations',
         {
             "api_key": "77a9113bda7ae5b92a6ef892135d4e04",
             "campaign_invitation": {
@@ -47,7 +47,7 @@ app.post('/create-candidate', async (req, res) => {
 app.get('/candidates', async (req, res) => {
     // FOR TESTING - Change Campaign ID if needed. In this example it's 52.
     try {
-        const response = await axios.get('https://tech-eval.talkpush.com/api/talkpush_services/campaign_invitations?api_key=77a9113bda7ae5b92a6ef892135d4e04&filter%5Bcampaign_id%5D=52')
+        const response = await axios.get('https://tech-eval.talkpush.com/api/talkpush_services/campaign_invitations?api_key=77a9113bda7ae5b92a6ef892135d4e04&filter%5Bcampaign_id%5D=58')
         
         // Cleaning up of HTML-encoded parts in the response data
         const candidatesRaw = response.data.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>|/gi,'').replace(/&quot;/gi,'"')
