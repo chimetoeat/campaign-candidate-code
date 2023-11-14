@@ -15,7 +15,15 @@
     <tbody>
       <% for (let i = 0; candidates.candidates[i] !== undefined; i++) { %>
         <tr>
-          <th scope="row"><button type="button" class="btn btn-success">Shortlist</button></th>
+          <th scope="row">
+            <form action="/shortlist?_method=PUT" method="post">
+              <% if (candidates.candidates[i].state === "shortlisted") { %>
+                <button disabled class="btn btn-secondary">Shortlisted</button>
+              <% }  else { %>
+                <button type="submit" class="btn btn-success" name="shortlistButton" value="<%= candidates.candidates[i].id %>">Shortlist</button>
+              <% } %>
+            </form>
+          </th>
           <td><%= candidates.candidates[i].first_name %></td>
           <td><%= candidates.candidates[i].last_name %></td>
           <td><%= candidates.candidates[i].email %></td>
