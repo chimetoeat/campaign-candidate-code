@@ -22,7 +22,7 @@ app.get('/create-candidate', function (req, res) {
 app.post('/create-candidate', async (req, res) => {
     const { first_name, last_name, email } = req.body;
 
-    // POST REQUEST to Talkpush API to Create a new Candidate for Campaign ID 52
+    // FOR TESTING - Change Campaign ID if needed. In this example it's 52.
     try {
         const response = await axios.post('https://tech-eval.talkpush.com/api/talkpush_services/campaigns/52/campaign_invitations',
         {
@@ -45,11 +45,14 @@ app.post('/create-candidate', async (req, res) => {
 
 // Retrieve Candidates
 app.get('/candidates', async (req, res) => {
-    // Retrieve all Candidates from Campaign ID 52
+    // FOR TESTING - Change Campaign ID if needed. In this example it's 52.
     try {
         const response = await axios.get('https://tech-eval.talkpush.com/api/talkpush_services/campaign_invitations?api_key=77a9113bda7ae5b92a6ef892135d4e04&filter%5Bcampaign_id%5D=52')
+        
+        // Cleaning up of HTML-encoded parts in the response data
         const candidatesRaw = response.data.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>|/gi,'').replace(/&quot;/gi,'"')
         const candidates = JSON.parse(candidatesRaw)
+
         res.render('allCandidates', {candidates})
     }
     catch(err) {
