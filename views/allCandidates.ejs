@@ -20,7 +20,7 @@
               <% if (candidates.candidates[i].state === "shortlisted") { %>
                 <button disabled class="btn btn-secondary">Shortlisted</button>
               <% }  else { %>
-                <button type="submit" class="btn btn-success" name="shortlistButton" value="<%= candidates.candidates[i].id %>">Shortlist</button>
+                <button type="submit" class="btn btn-success" name="shortlistButtonID" value="<%= candidates.candidates[i].id %>">Shortlist</button>
               <% } %>
             </form>
           </th>

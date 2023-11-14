@@ -1,21 +1,35 @@
 {
-  "name": "campaign-candidate-code",
+  "name": "@toolz/campaign-candidate-code",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --transformIgnorePatterns \"node_modules/(?!@toolz/allow)/\" --env=jsdom"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.1",
-    "cheerio": "^1.0.0-rc.12",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
-    "html-entities": "^2.4.0",
     "method-override": "^3.0.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "@toolz/is-a-regular-object": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-modules-commonjs": "^7.13.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.12.13",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-jest": "^26.6.2",
+    "jest-cli": "^26.6.3"
   }
 }
