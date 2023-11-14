@@ -17,6 +17,7 @@ API Interaction
 Campaign Creation
 Candidate Creation
 Shortlisting of Candidates
+User-friendly Navigations
 
 ## Getting Started
 
@@ -33,7 +34,6 @@ Before you begin, ensure you have the following installed:
 ### Installation and Usage
 
 1. Clone the repository:
-    ```sh
     git clone https://github.com/chimetoeat/campaign-candidate-code.git
 
 2. Navigate to project directory:
