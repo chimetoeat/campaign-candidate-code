@@ -8,8 +8,6 @@ A simple web app.
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation and Usage](#installation-and-usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
