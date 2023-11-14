@@ -13,11 +13,11 @@ A simple web app.
 
 ## Features
 
-API Interaction
-Campaign Creation
-Candidate Creation
-Shortlisting of Candidates
-User-friendly Navigations
+- API Interaction
+- Campaign Creation
+- Candidate Creation
+- Shortlisting of Candidates
+- User-friendly Navigations
 
 ## Getting Started
 
