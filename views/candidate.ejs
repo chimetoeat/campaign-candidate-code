@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <h1>Create Candidate</h1>
   
-    <form action="/candidate" method="POST">
+    <form action="/create-candidate" method="POST">
         <div class="mb-3">
           <label for="first_name" class="form-label">First Name</label>
           <input type="text" class="form-control" id="first_name" name="first_name" required>
@@ -22,12 +22,11 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    <% if (success !== "") { %>
-        <br>
-        <div class="alert alert-success" role="alert">
-            Successfully created a new candidate.
-        </div>
-    <% }%>
+    <br>
+
+    <form action="/candidates" method="get">
+      <button class="btn btn-secondary" type="submit">Go to Candidates</button>
+    </form>
     
 
 </div>

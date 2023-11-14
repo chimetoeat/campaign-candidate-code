@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+    <h1>List of Candidates</h1>
+
+    <table class="table table-striped">
+        <thead>
+      <tr>
+        <th scope="col">Action</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (let i = 0; candidates.candidates[i] !== undefined; i++) { %>
+        <tr>
+          <th scope="row"><button type="button" class="btn btn-success">Shortlist</button></th>
+          <td><%= candidates.candidates[i].first_name %></td>
+          <td><%= candidates.candidates[i].last_name %></td>
+          <td><%= candidates.candidates[i].email %></td>
+        </tr>
+      <% } %>
+    </tbody>
+    </table>
+  
+
+    <form action="/create-candidate" method="get">
+      <button class="btn btn-primary" type="submit">Create new candidate</button>
+    </form>
+
+</div>
+ 
+<%- include('partials/footer') %>

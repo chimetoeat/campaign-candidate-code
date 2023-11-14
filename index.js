@@ -1,20 +1,20 @@
 const express = require("express");
 const ejs = require("ejs");
 const axios = require('axios');
+const Entities = require('html-entities').AllHtmlEntities;
 
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended : true}));
 app.use(express.json());
 
-let success = ""
 
 app.get("/", function (req, res) {
-    res.render("candidate", {success});
+    res.render("candidate");
 })
 
 
-// CAMPAIGN CREATION
+// Create Campaign
 app.get("/campaign", function (req, res) {
     res.render("campaign");
 })
@@ -52,13 +52,12 @@ app.post('/campaign', function (req, res)  {
   });
 
 
-// CANDIDATE CREATION
-
-app.get('/candidate', function (req, res) {
-    res.render("candidate", {success});
+// Create Candidate
+app.get('/create-candidate', function (req, res) {
+    res.render("candidate");
 })
 
-app.post('/candidate', function (req, res)  {
+app.post('/create-candidate', function (req, res)  {
     
     const { first_name, last_name, email } = req.body;
 
@@ -77,8 +76,7 @@ app.post('/candidate', function (req, res)  {
         }
     })
     .then((result) => {
-        success = "SUCCESS"
-        res.render("candidate", {success})
+        res.redirect("/candidates")
         console.log(result.data)
     }).catch((err) => {
         res.render("errors", {err})
@@ -86,6 +84,20 @@ app.post('/candidate', function (req, res)  {
     });
 });
 
+// Retrieve Candidates
+app.get('/candidates', function (req, res) {
+
+    axios.get('https://tech-eval.talkpush.com/api/talkpush_services/campaign_invitations?api_key=77a9113bda7ae5b92a6ef892135d4e04&filter%5Bcampaign_id%5D=52')
+    .then((result) => {
+        const candidatesRaw = result.data.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>|/gi,'').replace(/&quot;/gi,'"')
+        const candidates = JSON.parse(candidatesRaw)
+        res.render('allCandidates', {candidates})
+
+    }).catch((err) => {
+        res.render("errors", {err})
+        console.log(err)
+    });
+})
 
 // Server Port Setup
 app.listen("3000", function () {
