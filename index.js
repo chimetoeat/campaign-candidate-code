@@ -7,14 +7,22 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended : true}));
 app.use(express.json());
 
+let success = ""
+
 app.get("/", function (req, res) {
+    res.render("candidate", {success});
+})
+
+
+// CAMPAIGN CREATION
+app.get("/campaign", function (req, res) {
     res.render("campaign");
 })
 
-app.post('/', function (req, res)  {
+app.post('/campaign', function (req, res)  {
         const { campaign_title } = req.body;
 
-        // POST REQUEST to external JSON API to Create a new campaign
+        // POST REQUEST to external JSON API to Create a new Campaign
         axios.post('https://tech-eval.talkpush.com/api/talkpush_services/campaigns',
         {
             "api_key": "77a9113bda7ae5b92a6ef892135d4e04",
@@ -36,11 +44,48 @@ app.post('/', function (req, res)  {
             }
         })
         .then((result) => {
+            res.redirect("candidate")
             console.log(result.data)
         }).catch((err) => {
             console.log(err)
         });
   });
+
+
+// CANDIDATE CREATION
+
+app.get('/candidate', function (req, res) {
+    res.render("candidate", {success});
+})
+
+app.post('/candidate', function (req, res)  {
+    
+    const { first_name, last_name, email } = req.body;
+
+    // POST REQUEST to external JSON API to Create a new Candidate
+    // ID of Campaign Created = 52
+    axios.post('https://tech-eval.talkpush.com/api/talkpush_services/campaigns/52/campaign_invitations',
+    {
+        "api_key": "77a9113bda7ae5b92a6ef892135d4e04",
+        "campaign_invitation": {
+          "first_name": first_name,
+          "last_name": last_name,
+          "email": email,
+          "user_phone_number": "string",
+          "source": "string",
+          "others": {}
+        }
+    })
+    .then((result) => {
+        success = "SUCCESS"
+        res.render("candidate", {success})
+        console.log(result.data)
+    }).catch((err) => {
+        res.render("errors", {err})
+        console.log(err)
+    });
+});
+
 
 // Server Port Setup
 app.listen("3000", function () {
