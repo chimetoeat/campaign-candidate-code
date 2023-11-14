@@ -56,3 +56,5 @@ Before you begin, ensure you have the following installed:
 9. After creating a new candidate, please do wait for a few moments for the server to reflect the newly created candidates.
 
 10. To shortlist a candidate, simply click the Shorlist button beside the names of the candidates. All shortlisted candidates' buttons will be disabled once they're shortlisted.
+
+11. For testing, please use this command in your project directory -> NODE_OPTIONS=--experimental-vm-modules npx jest
